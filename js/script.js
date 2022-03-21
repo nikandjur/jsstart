@@ -8,24 +8,31 @@ const personalMoviesDB = {
     privat: false
 };
 
-const a = prompt('Один из последних просмотренных фильмов?', ''),
-        b = prompt('На сколько оцените его?', ''),
-        c = prompt('Один из последних просмотренных фильмов?', ''),
-        d = prompt('На сколько оцените его?', '');   
-
-personalMoviesDB.movies[a] = b;
-personalMoviesDB.movies[c] = d;
+// personalMoviesDB.movies[c] = d;
 console.log(personalMoviesDB);
 
+for (let i=0; i<2; i++){
+     const a = prompt('Один из последних просмотренных фильмов?', ''),
+        b = prompt('На сколько оцените его?', '');
 
+    if (a != '' && b != '' ){
+        i--;
+    }
+    personalMoviesDB.movies[a] = b;
+    
+}
 
+// function cutFruit(fruit) {
+//     return fruit*4;
+// }
+// function combFruit(apple,orange){
+//     const cutApple = cutFruit(apple);
+//     const cutOrange = cutFruit(orange);
 
-
-
-
-
-
-
+//     const juis = `состав ${cutApple} и еще ${cutOrange}`;
+//     return juis;
+// }
+// console.log(combFruit(2,4));
 
 //let incr = 10,
 //    decr = 10;
