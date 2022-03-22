@@ -1,26 +1,69 @@
-'use strict';
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели', '');
-const personalMoviesDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
+
+let numberOfFilms;
+
+function start(){
+  numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
+
+  while (numberOfFilms == '' || numberOfFilms == 'null' || isNaN(numberOfFilms)) {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?','');
+  }
+ 
+}
+
+start();
+
+const personalMovieDB = {
+  count:numberOfFilms,
+  movies:{},
+  actors:{},
+  genres:[],
+  privat: false
 };
 
-// personalMoviesDB.movies[c] = d;
-console.log(personalMoviesDB);
-
-for (let i=0; i<2; i++){
-     const a = prompt('Один из последних просмотренных фильмов?', ''),
-        b = prompt('На сколько оцените его?', '');
-
-    if (a != '' && b != '' ){
-        i--;
-    }
-    personalMoviesDB.movies[a] = b;
-    
+function rememberMyFilms() {
+  for (let i = 0; i < 2; i++){
+  let a = prompt('Один из последних просмотренных фильмов?','');
+  let b = prompt('На сколько оцените его?', '');
+  console.log(i);
+ 
+  if (a != '' && b != ''){
+    personalMovieDB.movies[a] = b;
+  } else {
+    console.log('error');
+    i--;
+  }
 }
+}
+
+rememberMyFilms();
+
+function detectPersonalLevel() {
+  if (personalMovieDB.count<10){
+  console.log("Просмотрено довольно мало фильмов");
+} else if (personalMovieDB.count<30 && personalMovieDB.count<30){
+    console.log("Вы классический зритель");
+} else if (30<personalMovieDB.count){
+    console.log("Вы киноман");
+}
+
+}
+detectPersonalLevel();
+
+
+function showMyDB() {
+  if (personalMovieDB.privat === false){
+    console.log(personalMovieDB);
+  }
+}
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres(){
+  for (let i=1; i<=3; i++){
+    personalMovieDB.genres[i-1] = prompt(`Ваш любимый жанр под номером ${i}`);
+  }
+}
+writeYourGenres();
+console.log(personalMovieDB);
 
 // function cutFruit(fruit) {
 //     return fruit*4;
@@ -29,8 +72,9 @@ for (let i=0; i<2; i++){
 //     const cutApple = cutFruit(apple);
 //     const cutOrange = cutFruit(orange);
 
-//     const juis = `состав ${cutApple} и еще ${cutOrange}`;
-//     return juis;
+
+//     const sjuice = `вариант с ${cutApple} вдобавок еще ${cutOrange}`;
+//     return sjuice; 
 // }
 // console.log(combFruit(2,4));
 
